@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project page and privacy policy for New Tabs Always Open Right of Current.">
+  <link rel="icon" type="image/png" sizes="256x256" href="icons/icon-256.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>New Tabs Always Open Right of Current</title>
+  <style>
+    :root {
+      --bg: #f6f6f4;
+      --panel: #ffffff;
+      --text: #161616;
+      --muted: #575757;
+      --line: #202020;
+      --soft-line: #d8d8d4;
+      --link: #0a52b7;
+      --focus: #ef3e36;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Google Sans Flex", Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.48;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(190px, 24vw) minmax(0, 1fr);
+      grid-template-rows: minmax(220px, 28vh) 1fr;
+      background: var(--panel);
+    }
+
+    .logo-pane,
+    .title-pane,
+    .menu-pane,
+    .content-pane {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .logo-pane {
+      display: grid;
+      place-items: center;
+      border-right: 4px solid var(--line);
+      border-bottom: 4px solid var(--line);
+      padding: 24px;
+    }
+
+    .logo-link {
+      display: inline-grid;
+      place-items: center;
+    }
+
+    .logo {
+      width: min(150px, 72%);
+      height: auto;
+      image-rendering: auto;
+    }
+
+    .title-pane {
+      display: flex;
+      align-items: center;
+      border-bottom: 4px solid var(--line);
+      padding: clamp(24px, 5vw, 64px);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(36px, 5.4vw, 70px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    .menu-pane {
+      border-right: 4px solid var(--line);
+      padding: 30px clamp(18px, 3vw, 36px);
+      background: #fbfbfa;
+    }
+
+    .menu-pane nav {
+      position: sticky;
+      top: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .menu-label {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .menu-pane a {
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .menu-pane a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .content-pane {
+      padding: clamp(22px, 2.4vw, 34px) clamp(26px, 4vw, 58px) clamp(32px, 4vw, 58px);
+      overflow: visible;
+      overflow-wrap: break-word;
+    }
+
+    .content-pane section {
+      max-width: 900px;
+      margin-bottom: 44px;
+    }
+
+    .content-pane section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3.2vw, 40px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    p {
+      max-width: 760px;
+      margin: 10px 0;
+      color: #2b2b2b;
+    }
+
+    ul {
+      max-width: 780px;
+      margin: 10px 0 0 22px;
+      padding: 0;
+      color: #2b2b2b;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.94em;
+      background: #eeeeea;
+      border: 1px solid #deded8;
+      padding: 1px 5px;
+    }
+
+    .screenshot {
+      width: min(100%, 840px);
+      height: auto;
+      margin-top: 16px;
+      border: 1px solid var(--soft-line);
+      display: block;
+    }
+
+    .links-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .links-list li {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .link-label {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        display: block;
+      }
+
+      .logo-pane,
+      .title-pane,
+      .menu-pane {
+        border-right: 0;
+        border-bottom: 3px solid var(--line);
+      }
+
+      .logo-pane {
+        place-items: start;
+        padding: 24px 22px;
+      }
+
+      .logo {
+        width: 96px;
+      }
+
+      .title-pane {
+        padding: 24px 22px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 10.2vw, 42px);
+      }
+
+      .menu-pane {
+        padding: 18px 22px;
+      }
+
+      .menu-pane nav {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .menu-label {
+        grid-column: 1 / -1;
+      }
+
+      .content-pane {
+        padding: 28px 22px 38px;
+      }
+
+      .links-list li {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="logo-pane">
+      <a class="logo-link" href="https://andkon.dev/new-tabs-right/" aria-label="New Tabs Always Open Right of Current homepage">
+        <img class="logo" src="icons/icon-256.png" alt="New Tabs Always Open Right of Current logo">
+      </a>
+    </header>
+
+    <div class="title-pane" aria-labelledby="page-title">
+      <h1 id="page-title">New Tabs Always Open Right of Current</h1>
+    </div>
+
+    <aside class="menu-pane" aria-label="Page sections">
+      <nav>
+        <p class="menu-label">Menu</p>
+        <a href="#overview">Overview</a>
+        <a href="#web-store">Web Store</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#no-warranty">No Warranty</a>
+        <a href="#support">Links</a>
+      </nav>
+    </aside>
+
+    <div class="content-pane">
+      <section id="overview">
+        <h2>Overview</h2>
+        <p><strong>New Tabs Always Open Right of Current</strong> opens every new tab immediately to the right of the current tab including tabs opened from the toolbar new-tab button, keyboard shortcuts, page links, repeated child tabs, and links from other apps.</p>
+        <img class="screenshot" src="store-assets/newtabright-screenshot.png" alt="Screenshot showing a new tab moved next to the current tab">
+      </section>
+
+      <section id="web-store">
+        <h2>Web Store Availability</h2>
+        <p>Chrome Web Store link coming soon.</p>
+        <p>The extension is built for Chrome, Brave, Edge, and other Chromium browsers that support Manifest V3 extensions from the Chrome Web Store.</p>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy Policy</h2>
+        <p>This Privacy Policy applies to the <strong>New Tabs Always Open Right of Current</strong> browser extension.</p>
+
+        <h3>Data processed by the extension</h3>
+        <p>The extension processes tab and window metadata locally so it can place a new tab beside the tab that created it or beside the last active tab. This includes tab IDs, window IDs, active-tab state, opener/source tab IDs, pinned state, and tab indexes.</p>
+        <p>The extension does not store browsing history or page URLs. It uses source and target tab IDs from browser tab/navigation events only to decide where a newly opened tab should be moved.</p>
+
+        <h3>Data stored by the extension</h3>
+        <p>The extension stores short-lived session state in browser-managed extension storage. This state is used only to remember recent active/source tab relationships while the browser session is running.</p>
+
+        <h3>What the extension does not collect</h3>
+        <ul>
+          <li>No names, email addresses, account identifiers, payment details, health information, location, or personal communications.</li>
+          <li>No page contents, form contents, passwords, cookies, or authentication tokens.</li>
+          <li>No analytics, advertising identifiers, telemetry, or tracking data.</li>
+        </ul>
+
+        <h3>Network requests and sharing</h3>
+        <p>The extension does not send data to the developer, to a backend server, or to third-party analytics or advertising services. The developer does not sell user data.</p>
+        <p>The use of information received from Google APIs adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+
+        <h3>Retention and deletion</h3>
+        <p>Session state remains in browser-managed extension storage until cleared by the browser, replaced by newer state, or removed when the extension is uninstalled.</p>
+      </section>
+
+      <section id="no-warranty">
+        <h2>No Warranty</h2>
+        <p>The extension is provided "as is" and "as available," without warranties of any kind, either express or implied. To the fullest extent permitted by law, we disclaim all warranties, including implied warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, reliability, availability, and uninterrupted or error-free operation. Your use of the extension is at your own risk.</p>
+      </section>
+
+      <section id="support">
+        <h2>Support and links</h2>
+        <ul class="links-list">
+          <li><span class="link-label">Project homepage:</span> <a href="https://andkon.dev/new-tabs-right/" target="_blank" rel="noopener">andkon.dev/new-tabs-right/</a></li>
+          <li><span class="link-label">Repository:</span> <a href="https://github.com/andkondev/new-tabs-right" target="_blank" rel="noopener">github.com/andkondev/new-tabs-right</a></li>
+          <li><span class="link-label">Issues:</span> <a href="https://github.com/andkondev/new-tabs-right/issues" target="_blank" rel="noopener">github.com/andkondev/new-tabs-right/issues</a></li>
+          <li><span class="link-label">Email/PayPal/tips:</span> <a href="mailto:andkon@andkon.com">andkon@andkon.com</a></li>
+          <li><span class="link-label">Developer site:</span> <a href="https://andkon.dev" target="_blank" rel="noopener">andkon.dev</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
